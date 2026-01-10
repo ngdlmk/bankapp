@@ -1,0 +1,21 @@
+export const DEVICE_ID_KEY = 'deviceId';
+export const LAST_ESIM_STATUS = 'last_esim_status';
+export const SIM_ACTIVATED = 'sim_activated';
+export const AUTH_TOKEN = 'auth_token';
+export const USER_NAME_KEY = 'username';
+export const EMAIL_KEY = 'email';
+export const ONBOARDING_STATUS = 'onboarding_status';
+export const IS_EXPERIENCE_BUILD = true;
+export const RESTRICTED_MANUFACTURERS = ['Xiaomi'];
+export const LAST_FEEDBACK_DATE = 'last_feedback_date';
+export const USER_PURCHASE = 'user_purchase';
+export const LAST_FEEDBACK_SUBMIT_CHECK_TIME =
+  'last_feedback_submit_check_time';
+export const TRACKING_STATUS = 'tracking_status';
+export const USER_DETAILS = 'user_details';
+export const SELECTED_COUNTRY = 'selected_country';
+export const PURCHASE_COUNT = 'purchase_count';
+export const PURCHASE_HISTORY = 'purchase_history';
+export const TOPUP_PURCHASE_HISTORY = 'topup_purchase_history';
+export const DAHBOARD_DATA = 'dashboard_data';
+export const SESSION_DATA = 'session_data';
