@@ -84,6 +84,67 @@ shawbrook-app/
 └── package.json             # Dependencies
 ```
 
+🔐 Authentication & Account Creation Logic
+1. Authentication Technique
+- We utilize OAuth 2.0 with Authorization Code Flow, implemented via a secure embedded browser (WebView). This is the - - industry standard for securing mobile applications.
+
+The Workflow
+- Initiation: When the user taps "Continue to Secure Login", the app opens a WebView pointing to our Identity Provider's - hosted login page (Auth0).
+
+- URL: https://samples.auth0.com/authorize
+
+- Parameters: Includes client_id, redirect_uri, and response_type=code.
+
+- User Action (Hosted Page): The user enters their credentials (or creates an account) directly on the secure Auth0 webpage.
+
+- Security Benefit: The app never sees or stores the user's password directly.
+
+- Redirection & Interception: Upon successful login, Auth0 redirects the WebView to a specific URL (https://openidconnect.net/callback).
+
+- The app listens for this URL change using onNavigationStateChange.
+
+- Token Extraction: The redirect URL contains a specific code (e.g., .../callback?code=AbCd123...).
+
+- The app regex matches this code.
+
+- The code is extracted and securely stored.
+
+- Secure Storage: The authentication token/code is saved to the device's Keychain (iOS) or Keystore (Android) using expo-secure-store. This ensures the session persists securely even if the app is closed.
+
+2. How to Create an Account
+- Since we are using a hosted Identity Provider (Auth0), the "Sign Up" and "Log In" processes are handled on the same external screen. We do not need a separate native screen for registration.
+
+Step-by-Step for Users
+- Open the app and navigate to the Connect Account screen.
+
+- Tap the "Continue to Secure Login" button.
+
+- A secure modal will slide up, loading the Auth0 login page.
+
+- To Create an Account:
+
+- Look for the "Sign Up" tab or link on the login page (usually next to "Log In").
+
+- Enter your email and create a password.
+
+- Follow the prompts to authorize the app.
+
+- Completion:
+
+- Once registered, the modal will automatically close.
+
+- You will be redirected to the Security Setup screen to configure your PIN/FaceID.
+
+3. Technical Stack
+- Identity Provider: Auth0 (Demo Tenant)
+
+- Browser Component: react-native-webview
+
+- Storage: expo-secure-store (AES-256 Encryption)
+
+- Protocol: OAuth 2.0 / OIDC (OpenID Connect)
+
+
 📱 Screen Features & Functionality
 1. Splash Screen (screens/splash)
 - Animation: Uses Animated.parallel for a smooth Scale & Fade-in effect on the logo.
