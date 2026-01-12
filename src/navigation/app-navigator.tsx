@@ -1,44 +1,66 @@
-import "@/theme/index";
-import React from 'react';
-import { routes } from '../constants/routes';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-//import BottomSheetComponent from '../components/molecules/BottomSheet/bottomSheet';
-import { AppStackParamList } from '../types/navigation-types';
-
+import SecurityScreen from "@/screens/security/security-screen";
+import { navigateToSecurity, navigationRef } from "@/utils/navigation-utils";
 import { NavigationContainer } from '@react-navigation/native';
-import ESimInstallationScreen from '../screens/esim-installation/esim-installation-screen';
-import IntroScreen from '../screens/intro/intro-screen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as SecureStore from 'expo-secure-store';
+import React, { useEffect, useRef } from 'react';
+import { AppState } from "react-native";
+import { routes } from '../constants/routes';
+import LoginScreen from "../screens/login/login-screen";
 import SplashScreen from '../screens/splash/splash-screen';
-import VerifyEmailScreen from '../screens/verify-email/verify-email-screen';
+import { AppStackParamList } from '../types/navigation-types';
+import TabNavigator from "./tab-navigator";
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
 const AppNavigator = () => {
+
+  const appState = useRef(AppState.currentState);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', async (nextAppState) => {
+      if (
+        appState.current === 'active' &&
+        (nextAppState === 'inactive' || nextAppState === 'background')
+      ) {
+        const token = await SecureStore.getItemAsync('user_token');
+        if (token) {
+          navigateToSecurity();
+        }
+      }
+
+      appState.current = nextAppState;
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         initialRouteName={routes.SPLASH_SCREEN}
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name={routes.SPLASH_SCREEN} component={SplashScreen} />
         <Stack.Screen
-          name={routes.ESIM_INSTALLATION_SCREEN}
-          component={ESimInstallationScreen}
-          options={{ animation: 'none' }}
+          name={routes.LOGIN_SCREEN}
+          component={LoginScreen}
         />
         <Stack.Screen
-          name={routes.INTRO_SCREEN}
-          component={IntroScreen}
-          options={{ animation: 'none' }}
+          name={routes.SECURITY_SCREEN}
+          component={SecurityScreen}
+          options={{ animation: 'fade' }}
         />
         <Stack.Screen
-          name={routes.VERIFY_EMAIL_SCREEN}
-          component={VerifyEmailScreen}
-          options={{ animation: 'none' }}
+          name={routes.SPLASH_SCREEN}
+          component={SplashScreen}
+        />
+        <Stack.Screen
+          name={routes.TAB_NAVIGATOR}
+          component={TabNavigator}
+          options={{ animation: 'fade' }}
         />
       </Stack.Navigator>
-      {/* <BottomSheetComponent /> */}
     </NavigationContainer>
   );
 };
