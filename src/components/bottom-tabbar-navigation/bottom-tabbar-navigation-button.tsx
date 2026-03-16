@@ -1,8 +1,8 @@
-import ToggleIcon from '@/components/toggle-icon/toggle-icon';
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { styles } from './bottom-tabbar-navigation-styles';
-import { TabButtonProps } from './bottom-tabbar-navigation-types';
+import ToggleIcon from "@/components/toggle-icon/toggle-icon";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { styles } from "./bottom-tabbar-navigation-styles";
+import { TabButtonProps } from "./bottom-tabbar-navigation-types";
 
 const TabButton = ({
   isSelected,
@@ -18,19 +18,14 @@ const TabButton = ({
       onPress={onPress}
       style={styles.defaultButton}
     >
-      <View style={styles.indicator(isSelected)}>
+      <View style={styles.indicator}>
         <ToggleIcon
           isActive={isSelected}
           activeIcon={activeIcon}
           inactiveIcon={inactiveIcon}
         />
       </View>
-      
-      {label && (
-        <Text style={styles.label(isSelected)}>
-          {label}
-        </Text>
-      )}
+      {label && <Text style={styles.label(isSelected)}>{label}</Text>}
     </TouchableOpacity>
   );
 };
