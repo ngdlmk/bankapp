@@ -1,0 +1,11 @@
+.expo
+.github
+.vscode
+dist
+node_modules
+android
+ios
+babel.config.js
+metro.config.js
+yarn.lock
+package.json
