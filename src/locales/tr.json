@@ -1,0 +1,22 @@
+{
+  "welcome": "Hoş Geldiniz",
+  "sign_in_desc": "Giriş yaparak devam edin",
+  "email_placeholder": "E-posta",
+  "password_placeholder": "Şifre",
+  "login": "Giriş Yap",
+  "warning": "Uyarı",
+  "fill_all_fields": "Lütfen tüm alanları doldurun.",
+  "my_profile": "Benim Profilim",
+  "logout": "Çıkış Yap",
+  "test_api": "Test API Adresi",
+  "error": "Hata",
+  "logout_error": "Çıkış yapılırken bir sorun oluştu.",
+  "saved_value": "Kaydedilen Değer",
+  "no_value_saved": "Henüz bir değer kaydedilmedi",
+  "placeholder_tab2": "Atom'a eklenecek yazıyı buraya girin",
+  "save_to_atom": "Atom'a Kaydet",
+  "tab_3_title": "Sekme 3 (Salt Okunur)",
+  "tab_3_desc": "Sekme 2'de girdiğiniz metni anlık olarak aşağıdan okuyabilirsiniz.",
+  "no_value_entered": "Henüz bir değer girilmedi",
+  "switch_lang": "Dili Değiştir / RTL Testi"
+}

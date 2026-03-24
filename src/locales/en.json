@@ -1,0 +1,22 @@
+{
+  "welcome": "Welcome",
+  "sign_in_desc": "Sign in to continue",
+  "email_placeholder": "Email Address",
+  "password_placeholder": "Password",
+  "login": "Login",
+  "warning": "Warning",
+  "fill_all_fields": "Please fill in all fields.",
+  "my_profile": "My Profile",
+  "logout": "Logout",
+  "test_api": "Test API Endpoint",
+  "error": "Error",
+  "logout_error": "An error occurred during logout.",
+  "saved_value": "Saved Value",
+  "no_value_saved": "No value saved yet",
+  "placeholder_tab2": "Enter text to save to Atom",
+  "save_to_atom": "Save to Atom",
+  "tab_3_title": "Tab 3 (Read-Only)",
+  "tab_3_desc": "The text entered in Tab 2 updates dynamically below.",
+  "no_value_entered": "No value entered yet",
+  "switch_lang": "Change Language / RTL Test"
+}
